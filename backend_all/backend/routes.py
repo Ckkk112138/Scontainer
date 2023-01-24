@@ -4,7 +4,26 @@ from .db_utils import Database
 
 db = Database()
 
+books = [
+{
+	'id': 1,
+	'title': u'La Divina Commedia',
+	'author': u'Dante Alighieri', 
+	'quantity': 3
+},
+{
+	'id': 2,
+	'title': u'The sun also rises',
+	'description': u'Ernest Hemingway', 
+	'quantity': 1
+}
+]
 
+@app.route('/inventory/api/v1.0/books', methods=['GET'])
+def get_books():
+    return jsonify({'books': books})
+	
+	
 @app.route('/api/users', methods=['GET', 'POST'])
 @app.route('/api/users/<int:user_id>', methods=['GET', 'PUT', 'DELETE'])
 def users(user_id=None):

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv-volume
+  labels:
+    type: local
+    app: mysql-app
+spec:
+  storageClassName: microk8s-hostpath
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/opt/mysql2/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: mysql-app
+spec:
+  storageClassName: microk8s-hostpath
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

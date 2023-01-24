@@ -1,10 +1,11 @@
 from contextlib import contextmanager
 import mysql.connector
+import os
 
-DATABASE = 'Users'
+DATABASE = os.getenv("db_name")
 USER = 'root'
-HOST = 'localhost'
-PASSWORD = 'toor'
+HOST = 'mysql'
+PASSWORD = os.getenv("db_root_password")
 
 
 class Database:
