@@ -35,7 +35,10 @@ $ kubectl apply -f course-api-service.yaml
 ### 3. React App Deployment:
 
 ###### Go to front folder:
-$ cd front/
+$ cd front/ \
+$ npm install \
+$ npm run-script build \
+Make sure you have the 'build' folder in your current directory
 
 ###### Build Dockerfile:
 $ sudo docker build . -t course-ui:v17 \
