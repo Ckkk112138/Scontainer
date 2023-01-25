@@ -51,6 +51,12 @@ $ kubectl apply -f course-ui-deployment.yaml \
 $ kubectl apply -f course-ui-service.yaml \
 Open the browser and use localhost:30002 to access
 
+###### Use Ingress to access the React app:
+$ cd front/ \
+$ kubectl apply -f course-ui-ingress.yaml \
+Add 127.0.0.1 my-course.com to the /etc/hosts
+Open the browser and use my-course.com to access
+
 
 ### Credit:
 Original project (no deployment):  https://github.com/Allirey/test_task134
