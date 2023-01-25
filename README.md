@@ -6,6 +6,8 @@
 $ kubectl apply -f mysql-secret.yaml
 
 ###### Create MySQL pvc and pv:
+Create storage on hard disk before creating the volume and claim: \
+$ sudo mkdir -p /opt/mysql2/data \
 $ kubectl apply -f mysql-storage.yaml
 
 ###### Create MySQL deployment:
