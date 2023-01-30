@@ -61,23 +61,23 @@ Open the browser and use my-course.com to access
 
 ###### 1. policy-deny-all
 unless there are other network rules applied, no pod can communicate with any other pod. \
-$ kubectl apply -f policy-deny-all.yaml \
+$ kubectl apply -f policy-deny-all.yaml 
 
 ###### 2. db-allow
 allow traffic only from the api pod to the mysql pod \
-$ kubectl apply -f db-allow.yaml \
+$ kubectl apply -f db-allow.yaml
 
 ###### 3. api-allow
 allow traffic only from the frontend pod to the api pod \
-$ kubectl apply -f api-allow.yaml \
+$ kubectl apply -f api-allow.yaml
 \
-Use the combination of network policies 1 to 3 to secure the application \ 
+Use the combination of network policies 1 to 3 to secure the application
 
 ###### 4. DENY all traffic from other namespaces (current namespace: default)
 deny all the traffic from other namespaces while allowing all the traffic coming from the same namespace the pod deployed to \
 $ kubectl apply -f deny-from-other-namespaces.yaml \
 \
-If you deploy the application in another namespace (e.g. ns-course), please change the configuration in the yaml file accordingly.\
+If you deploy the application in another namespace (e.g. ns-course), please change the configuration in the yaml file accordingly.
 
 
 
