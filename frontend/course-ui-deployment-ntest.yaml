@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-ui-deployment-ntest
+  labels:
+    app: course-ui-ntest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-ui-ntest
+  template:
+    metadata:
+      labels:
+        app: course-ui-ntest
+    spec:
+      containers:
+      - name: course-ui-container
+        image: localhost:32000/course-ui:v17
+        ports:
+        - containerPort: 80
