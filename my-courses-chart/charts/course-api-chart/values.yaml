@@ -1,0 +1,18 @@
+enabled: true
+
+replicaCount: 3
+name: courseapi-deployment
+
+deployment:
+  name: courseapi
+
+  container:
+    image: localhost:32000/course-api-v3
+    name: courseapi-container
+    
+service:
+  type: ClusterIP
+  protocol: TCP
+  port: 8081
+  targetPort: 5000
+  name: course-api-service
