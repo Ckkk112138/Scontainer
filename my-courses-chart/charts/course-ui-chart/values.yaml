@@ -1,0 +1,24 @@
+enabled: true
+
+replicaCount: 1
+name: courseui-deployment
+
+deployment:
+  name: course-ui-deployment
+
+  container:
+    image: localhost:32000/course-ui
+    name: course-ui-container
+    containerPort: 80
+
+service:
+  type: NodePort
+  nodePort: 30002
+  protocol: TCP
+  port: 8099
+  targetPort: 80
+  name: course-ui-service
+
+ingress:
+  name: ui-course-ingress
+  host:  my-course.com

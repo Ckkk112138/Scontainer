@@ -1,0 +1,34 @@
+enabled: true
+
+replicaCount: 1
+name: courseui-deployment
+
+deployment:
+  name: course-ui-deployment
+
+  container:
+    image: mysql
+    name: mysql-container
+    containerPort: 3306
+
+service:
+  port: 3306
+  name: mysql
+
+volumes:
+  name: mysql-persistent-storage
+  mountPath: /var/lib/mysql
+
+secret:
+  type: Opaque
+  name: mysql-secret
+
+pv:
+  name: mysql-pv-volume
+  storage: 5Gi
+  path: "/opt/mysql2/data"
+  storageClassName: microk8s-hostpath
+
+pvc:
+  name: mysql-pv-claim
+  storage: 5Gi
