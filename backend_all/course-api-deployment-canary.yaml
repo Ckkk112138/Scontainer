@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: courseapi-deployment-v2
+  labels:
+    app: courseapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: courseapi
+      version: v2.0.0
+  template:
+    metadata:
+      labels:
+        app: courseapi
+        version: v2.0.0
+    spec:
+      containers:
+        - name: courseapi-container
+          image: localhost:32000/course-api-v3
+          ports:
+            - containerPort: 5000
+          env:
+            - name: db_root_password
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: db_root_password
+            - name: db_name
+              value: Users
+            - name: VERSION
+              value: v2.0.0
