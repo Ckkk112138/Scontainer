@@ -85,9 +85,13 @@ $ kubectl apply -f deny-from-other-namespaces.yaml \
 \
 If you deploy the application in another namespace (e.g. ns-course), please change the configuration in the yaml file accordingly.
 
-### TSL
+### RBAC
 
+`kubectl apply -f role_control.yaml`
 
+create 2 Role and 1 ClusterRole
+
+create 3 service accounts binded to roles.
 
 
 ### Credit:
