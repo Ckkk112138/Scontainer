@@ -11,6 +11,9 @@ spec:
       - podSelector:
           matchLabels:
             app: courseapi
+      - podSelector:
+          matchLabels:
+            app: init-mysqldb
       ports:
         - protocol: TCP
           port: 3306

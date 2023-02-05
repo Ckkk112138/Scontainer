@@ -67,7 +67,8 @@ Open the browser and use my-course.com to access
 
 ###### 1. policy-deny-all
 unless there are other network rules applied, no pod can communicate with any other pod. \
-$ kubectl apply -f policy-deny-all.yaml 
+$ kubectl apply -f policy-deny-all.yaml \
+This will make the application cannot be accessed by domain name my-course.com
 
 ###### 2. db-allow
 allow traffic only from the api pod to the mysql pod \
