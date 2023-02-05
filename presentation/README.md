@@ -7,37 +7,10 @@
 
 * Kubernetes architecture
 
-* Application
-
-* Show nginx CORS config  
-`inventory-api/inventory-api-ingress.yaml`
-
-* TLS  
-    * Show Certificate in Browser
-    * Show Secret in Kubernetes  
-    `kubectl  get secrets`  
-    `kubectl describe secret inventory-app-tls-secret`
-
 ## Configuration
 > Show how you configured the pre-requisites for the application (Load Balancer, Service Mesh, Storage Class, Registry etc).
 
-* Show microk8s nodes  
-    * `kubectl get nodes`
-    * `kubectl describe node mtfunke-vu-ubuntu`  
-    (point to IP adress and CPU)
-
-* Show microk8s status  
-`microk8s status`  
-(point to plugins like MetalLB and HELM3 and ISTIO)
-
-* Show MetalLB Load Balancer  
-`kubectl -n metallb-system describe configmap config`
-
-* Show default StorageClass  
-`kubectl get sc`
-
-* Show registry  
-`microk8s ctr images ls |grep localhost`
+* See commands in the presentation .pdf file
 
 ## Deployment HELM
 > Show how you build the container images and publish to a registry. Show how you deploy the application. Show how to scale the application horizontally (stateless parts only). Show how to uninstall the application.
