@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ui-course-ingress
+  namespace: default
+  annotations:
+    # add an annotation indicating the issuer to use.
+    cert-manager.io/issuer: ca-issuer
+    cert-manager.io/common-name: my-course.com
+spec:
+  rules:
+    - host: my-course.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: course-ui-service
+                port:
+                  number: 8099
+  tls: # < placing a host in the TLS config will determine what ends up in the cert's subjectAltNames
+  - hosts:
+    - my-course.com
+    secretName: ui-secret                  

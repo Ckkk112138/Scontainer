@@ -53,9 +53,20 @@ Open the browser and use localhost:30002 to access
 
 ###### Configure tls
 
-`kubectl apply -f cert/selfsigned-cluster-issuer.yaml`
+install cert-manager:
 
-``kubectl apply -f cert/selfsigned-ca.yaml``
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.crds.yaml
+
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace default \
+  --version v1.11.0 \
+  --set installCRDs=true
+   
+kubectl apply -f cert/selfsigned-cluster-issuer.yaml
+kubectl apply -f cert/selfsigned-ca.yaml
+```
 
 ###### Use Ingress to access the React app:
 $ cd front/ \
