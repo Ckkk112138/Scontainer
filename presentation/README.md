@@ -42,27 +42,26 @@
 ## Deployment HELM
 > Show how you build the container images and publish to a registry. Show how you deploy the application. Show how to scale the application horizontally (stateless parts only). Show how to uninstall the application.
 
-* Build and tag Docker container images API
-    * `docker build -t inventory-api:v10 inventory-app/inventory-api/api-server/`
-    * `docker tag inventory-api:v10 localhost:32000/inventory-api:v10`
-    * `docker push localhost:32000/inventory-api:v10`
+* Enter the directory /backend_all then build and tag Docker container images API
+    * `sudo docker build . -t course-api-v3 --network=host`
+    * `docker tag course-api-v3 localhost:32000/course-api-v3`
+    * `docker push localhost:32000/course-api-v3`
 
-* Build and tag Docker container images UI
-    * `docker build -t inventory-ui:v10 inventory-app/inventory-ui/ui-client/`
-    * `docker tag inventory-ui:v10 localhost:32000/inventory-ui:v10`
-    * `docker push localhost:32000/inventory-ui:v10`
-
-* Crate namespace  
-`kubectl create namespace inventory-app-helm`
+* Enther the directory /frontend then build and tag Docker container images UI
+    * `sudo docker build . -t course-ui:v17`
+    * `docker tag course-ui:v17 localhost:32000/course-ui:v17`
+    * `docker push localhost:32000/course-ui:v17`
 
 * Install HELM chart  
-`helm install inventory-app-helm inventory-app/helm/inventory-app-chart/ -n inventory-app-helm`
+`helm install my-courses-chart --generate-name`
 
 * Scale horizontally  
-`kubectl -n inventory-app-helm scale deployment/inventory-api-deployment --replicas=5`
+`kubectl scale deployment courseapi-deployment --replicas=5`
+`kubectl scale deployment course-ui-deployment -- replicas=3`
+
 
 * Uninstall HELM chart  
-`helm uninstall inventory-app-helm -n inventory-app-helm`
+`helm uninstall <the name of the chart>`
 
 
 ## Upgrade
