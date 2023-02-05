@@ -51,6 +51,12 @@ $ kubectl apply -f course-ui-deployment.yaml \
 $ kubectl apply -f course-ui-service.yaml \
 Open the browser and use localhost:30002 to access
 
+###### Configure tls
+
+`kubectl apply -f cert/selfsigned-cluster-issuer.yaml`
+
+``kubectl apply -f cert/selfsigned-ca.yaml``
+
 ###### Use Ingress to access the React app:
 $ cd front/ \
 $ kubectl apply -f course-ui-ingress.yaml \
@@ -79,7 +85,13 @@ $ kubectl apply -f deny-from-other-namespaces.yaml \
 \
 If you deploy the application in another namespace (e.g. ns-course), please change the configuration in the yaml file accordingly.
 
+### RBAC
 
+`kubectl apply -f role_control.yaml`
+
+create 2 Role and 1 ClusterRole
+
+create 3 service accounts binded to roles.
 
 
 ### Credit:
